@@ -1,0 +1,22 @@
+class Solution {
+    public long countSubarrays(int[] nums, int k) {
+        int n=nums.length;
+        int i=0;
+        int j=0;
+        long result=0;
+        int count=0;
+        int maxE=Arrays.stream(nums).max().getAsInt();
+        while(j<n)
+        {
+            if(nums[j]==maxE) count++;
+            while(count>=k)
+            {
+                result+=n-j;
+            if(nums[i]==maxE) count--;
+            i++;
+            }
+            j++;
+        }
+        return result;
+    }
+}
